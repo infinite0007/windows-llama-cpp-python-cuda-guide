@@ -147,11 +147,12 @@ Now, inside the activated `env` environment:
 
 Still inside the activated `env` environment:
 
-1.  **Set Build Arguments in PowerShell:**
+1.  **Set Build Arguments in PowerShell (run as administrator):**
     These instruct `pip` to compile `llama-cpp-python` with CUDA support (CUBLAS) and to use the system's `nvcc.exe` (found via `CUDA_PATH`).
     ```powershell
     # Ensure (./env) is active!
-    $env:CMAKE_ARGS="-DLLAMA_CUBLAS=on"
+    $env:FORCE_CMAKE="1"
+    $env:CMAKE_ARGS="-DGGML_CUDA=on"
     # This line is crucial for explicitly pointing to the CUDA compiler:
     $env:CUDA_CXX="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin\nvcc.exe"
     ```
